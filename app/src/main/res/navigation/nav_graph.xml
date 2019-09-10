@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_nav"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/BMRFragment"
+        android:name="com.project.semicolon.mysupplements.ui.fragments.BMRFragment"
+        android:label="BMRFragment" />
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.project.semicolon.mysupplements.ui.fragments.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_BMRFragment"
+            app:destination="@id/BMRFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_fatBurnerFragment"
+            app:destination="@id/fatBurnerFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_mainFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articlesFragment"
+        android:name="com.project.semicolon.mysupplements.ui.fragments.ArticlesFragment"
+        android:label="ArticlesFragment" />
+    <fragment
+        android:id="@+id/fatBurnerFragment"
+        android:name="com.project.semicolon.mysupplements.ui.fragments.FatBurnerFragment"
+        android:label="FatBurnerFragment" />
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.project.semicolon.mysupplements.ui.fragments.CategoriesFragment"
+        android:label="CategoriesFragment" />
+</navigation>
