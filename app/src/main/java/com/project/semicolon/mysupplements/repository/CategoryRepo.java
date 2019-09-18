@@ -150,13 +150,18 @@ public class CategoryRepo implements Constants {
                             if (articles != null) {
                                 articles.clear();
                             }
-                            Article value = dataSnapshot.getValue(Article.class);
-                            if (value != null) {
-                                articles.add(value);
-                                articlesLiveData.postValue(articles);
-                            } else {
-                                articlesLiveData.postValue(null);
+
+                            for (DataSnapshot child : dataSnapshot.getChildren()) {
+                                Article value = child.getValue(Article.class);
+                                if (value != null) {
+                                    articles.add(value);
+                                    articlesLiveData.postValue(articles);
+                                } else {
+                                    articlesLiveData.postValue(null);
+                                }
+
                             }
+
                         } else {
                             articlesLiveData.postValue(null);
                         }
@@ -178,7 +183,7 @@ public class CategoryRepo implements Constants {
         final MutableLiveData<List<Article>> articleLiveData = new MutableLiveData<>();
         final List<Article> articles = new ArrayList<>();
 
-        articleRef.orderByChild("group")
+        articleRef.orderByChild("group").equalTo(group)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -187,13 +192,18 @@ public class CategoryRepo implements Constants {
                                 articles.clear();
                             }
 
-                            Article value = dataSnapshot.getValue(Article.class);
-                            if (value != null) {
-                                articles.add(value);
-                                articleLiveData.postValue(articles);
-                            } else {
-                                articleLiveData.postValue(null);
+                            for (DataSnapshot child : dataSnapshot.getChildren()) {
+                                Article value = child.getValue(Article.class);
+                                if (value != null) {
+                                    articles.add(value);
+                                    articleLiveData.postValue(articles);
+                                } else {
+                                    articleLiveData.postValue(null);
+                                }
+
                             }
+
+
                         } else {
                             articleLiveData.postValue(null);
                         }

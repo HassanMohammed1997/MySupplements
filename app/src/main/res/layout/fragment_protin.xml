@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="ProteinBinding" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp"
+            android:orientation="vertical"
+            tools:context=".ui.fragments.ProteinFragment">
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:elevation="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/btn_back"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:background="@null"
+                        android:src="@drawable/ic_keyboard_arrow_left_black_24dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/cairo_bold"
+                        android:gravity="center_vertical"
+                        android:text="@string/protien"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/colorPrimary" />
+                </LinearLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/toolbar"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/cairo_bold"
+                android:text="@string/target"
+                android:textColor="@color/colorPrimary" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/target_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@id/text1"
+                android:entries="@array/target"
+                android:spinnerMode="dialog" />
+
+            <TextView
+                android:id="@+id/text2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/target_spinner"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/cairo_bold"
+                android:text="@string/weight"
+                android:textColor="@color/colorPrimary" />
+
+            <EditText
+                android:id="@+id/et_weight"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_below="@id/text2"
+                android:inputType="number"
+                android:fontFamily="@font/cairo" />
+
+            <TextView
+                android:id="@+id/text3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_weight"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/cairo_bold"
+                android:text="@string/height_text"
+                android:textColor="@color/colorPrimary" />
+
+            <EditText
+                android:id="@+id/et_height"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:inputType="number"
+                android:layout_below="@id/text3"
+                android:fontFamily="@font/cairo" />
+
+            <TextView
+                android:id="@+id/text4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_height"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/cairo_bold"
+                android:text="@string/protien_prec"
+                android:textColor="@color/colorPrimary" />
+
+            <EditText
+                android:id="@+id/et_fat_per"
+                android:layout_width="match_parent"
+                android:inputType="number"
+                android:layout_height="45dp"
+                android:layout_below="@id/text4"
+                android:fontFamily="@font/cairo" />
+
+
+            <TextView
+                android:id="@+id/text5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_fat_per"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/cairo_bold"
+                android:text="@string/suggested_supplements"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textColor="@color/colorPrimary" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/suggested_supplements_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_below="@id/text5" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/btn_suggest"
+                android:foreground="?selectableItemBackground"
+                android:background="@drawable/button_bk"
+                android:fontFamily="@font/cairo"
+                android:text="@string/suggest_supplements"
+                android:textAllCaps="false"
+                android:layout_marginBottom="8dp"
+                android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</layout>

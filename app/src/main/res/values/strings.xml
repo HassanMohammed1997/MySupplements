@@ -38,6 +38,13 @@
     <string name="bmr_calculator">BMR Calculator</string>
     <string name="share">Share App</string>
     <string name="about_app">About App</string>
+    <string name="target">Target</string>
+    <string name="protien">Protien</string>
+    <string name="protien_prec">Fat percentage (%)</string>
+    <string name="suggested_supplements">Suggested Supplements</string>
+    <string name="suggest_supplements">Suggest Supplements</string>
+    <string name="Protein">Protein</string>
+    <string name="required">Required</string>
 
     <string-array name="gender">
         <item>Male</item>
@@ -50,6 +57,13 @@
         <item>عالى النشاط ( 3 – 4 مرات التمرين فى اﻷسبوع )</item>
         <item>عالى النشاط جدا ( 5 – 6 مرات التمرين فى اﻷسبوع )</item>
 
+
+    </string-array>
+
+    <string-array name="target">
+        <item>تضخيم</item>
+        <item>كتلة عضلية صافية</item>
+        <item>تنشيف</item>
 
     </string-array>
 </resources>

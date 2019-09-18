@@ -16,6 +16,7 @@ import com.project.semicolon.mysupplements.R;
 import com.project.semicolon.mysupplements.adapter.MainAdapter;
 import com.project.semicolon.mysupplements.databinding.MainFragmentBinding;
 import com.project.semicolon.mysupplements.model.MainModel;
+import com.project.semicolon.mysupplements.utils.AppUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,9 +55,11 @@ public class MainFragment extends Fragment {
         mainModel = new MainModel(getString(R.string.fat_burner), R.drawable.ic_list);
         mainModels.add(mainModel);
 
-        mainModel = new MainModel(getString(R.string.category), R.drawable.ic_list);
+        mainModel = new MainModel(getString(R.string.Protein), R.drawable.ic_list);
         mainModels.add(mainModel);
 
+        mainModel = new MainModel(getString(R.string.category), R.drawable.ic_list);
+        mainModels.add(mainModel);
 
         mainModel = new MainModel(getString(R.string.share), R.drawable.ic_share);
         mainModels.add(mainModel);
@@ -85,21 +88,23 @@ public class MainFragment extends Fragment {
 
         binding.mainRecycler.setAdapter(adapter);
 
-        adapter.setItemClickListener(new MainAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View v, int position) {
-                switch (position) {
-                    case 0:
-                        Navigation.findNavController(v).navigate(R.id.BMRFragment);
-                        break;
-                    case 1:
-                        Navigation.findNavController(v).navigate(R.id.action_mainFragment_to_fatBurnerFragment);
-                        break;
-                    case 2:
-                        Navigation.findNavController(v).navigate(R.id.action_mainFragment_to_categoriesFragment);
-                        break;
+        adapter.setItemClickListener((v, position) -> {
+            switch (position) {
+                case 0:
+                    Navigation.findNavController(v).navigate(R.id.BMRFragment);
+                    break;
+                case 1:
+                    Navigation.findNavController(v).navigate(R.id.action_mainFragment_to_fatBurnerFragment);
+                    break;
+                case 2:
+                    Navigation.findNavController(v).navigate(R.id.action_mainFragment_to_proteinFragment);
+                    break;
+                case 3:
+                    Navigation.findNavController(v).navigate(R.id.action_mainFragment_to_categoriesFragment);
+                    break;
+                case 4:
+                    AppUtil.share(getContext(), "https://www.google.com/", "MySupplements");
 
-                }
             }
         });
     }
