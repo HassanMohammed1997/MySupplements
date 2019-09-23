@@ -1,6 +1,7 @@
 package com.project.semicolon.mysupplements.ui.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -18,7 +19,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.project.semicolon.mysupplements.R;
 import com.project.semicolon.mysupplements.adapter.RecommendAdapter;
 import com.project.semicolon.mysupplements.databinding.FatBurnerBinding;
+import com.project.semicolon.mysupplements.ui.ArticleActivity;
 import com.project.semicolon.mysupplements.utils.AppUtil;
+import com.project.semicolon.mysupplements.utils.SharedPrefUtil;
 import com.project.semicolon.mysupplements.viewmodel.CategoryViewModel;
 
 /**
@@ -100,19 +103,23 @@ public class FatBurnerFragment extends Fragment {
     }
 
     private void initButtonsAction() {
-        binding.btnBack.setOnClickListener(this::backToMain);
 
         binding.btnCalculate.setOnClickListener(view -> {
 
             AppUtil.showDialog(getContext());
 
             getInputValues();
-            if (!validationValues())
+            if (!validationValues()) {
+                AppUtil.dismissDialog();
                 return;
+
+
+            }
 
 
             if (Integer.valueOf(currentWeight) < Integer.valueOf(targetWeight)) {
                 AppUtil.snack(binding.getRoot(), getString(R.string.current_weight_error));
+                AppUtil.dismissDialog();
                 return;
             }
 
@@ -125,12 +132,19 @@ public class FatBurnerFragment extends Fragment {
     }
 
     private void backToMain(View v) {
-        Navigation.findNavController(v).navigate(R.id.mainFragment);
     }
 
     private void initRecycler() {
         binding.articlesRecycler.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         binding.articlesRecycler.setAdapter(adapter);
+
+        adapter.setOnSuggestClickListener((view, article) -> {
+            SharedPrefUtil.save(getContext(), "desc", article.getDescription());
+            SharedPrefUtil.save(getContext(), "image_url", article.getImageUrl());
+            SharedPrefUtil.save(getContext(), "title", article.getTitle());
+            Intent in = new Intent(getContext(), ArticleActivity.class);
+            startActivity(in);
+        });
     }
 
     private boolean validationValues() {

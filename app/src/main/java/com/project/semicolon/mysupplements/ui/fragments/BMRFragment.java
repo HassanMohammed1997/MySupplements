@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.project.semicolon.mysupplements.R;
 import com.project.semicolon.mysupplements.databinding.BMRFragmentBinding;
+import com.project.semicolon.mysupplements.utils.AppUtil;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,7 +47,7 @@ public class BMRFragment extends Fragment {
                     case 2:
                         activityLevel = 1.8;
                         break;
-                    default:
+                    case 3:
                         activityLevel = 2.0;
                         break;
                 }
@@ -74,35 +75,32 @@ public class BMRFragment extends Fragment {
             }
         });
 
-        binding.btnCalculate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        binding.btnCalculate.setOnClickListener(view -> {
 
 
-                if (TextUtils.isEmpty(binding.inputAge.getText().toString())) {
-                    binding.inputAge.setError(getString(R.string.required_error));
-                    return;
-                } else if (TextUtils.isEmpty(binding.inputWeight.getText().toString())) {
-                    binding.inputWeight.setError(getString(R.string.required_error));
-                    return;
-                } else if (TextUtils.isEmpty(binding.inputHeight.getText().toString())) {
-                    binding.inputHeight.setError(getString(R.string.required_error));
-                    return;
-                } else if (TextUtils.isEmpty(gender)) {
-                    Toast.makeText(getActivity(), R.string.gender_text, Toast.LENGTH_SHORT).show();
-                    return;
-                } else if (activityLevel == 0) {
-                    Toast.makeText(getActivity(), R.string.activity_level_string, Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                int weight = Integer.parseInt(binding.inputWeight.getText().toString());
-                int height = Integer.parseInt(binding.inputHeight.getText().toString());
-                int age = Integer.parseInt(binding.inputAge.getText().toString());
-
-                double result = calculateBMR(weight, height, age, gender, activityLevel);
-                Toast.makeText(getActivity(), "Your BMR result: " + result, Toast.LENGTH_SHORT).show();
+            if (TextUtils.isEmpty(binding.inputAge.getText().toString())) {
+                binding.inputAge.setError(getString(R.string.required_error));
+                return;
+            } else if (TextUtils.isEmpty(binding.inputWeight.getText().toString())) {
+                binding.inputWeight.setError(getString(R.string.required_error));
+                return;
+            } else if (TextUtils.isEmpty(binding.inputHeight.getText().toString())) {
+                binding.inputHeight.setError(getString(R.string.required_error));
+                return;
+            } else if (TextUtils.isEmpty(gender)) {
+                Toast.makeText(getActivity(), R.string.gender_text, Toast.LENGTH_SHORT).show();
+                return;
+            } else if (activityLevel == 0) {
+                Toast.makeText(getActivity(), R.string.activity_level_string, Toast.LENGTH_SHORT).show();
+                return;
             }
+
+            int weight = Integer.parseInt(binding.inputWeight.getText().toString());
+            int height = Integer.parseInt(binding.inputHeight.getText().toString());
+            int age = Integer.parseInt(binding.inputAge.getText().toString());
+
+            double result = calculateBMR(weight, height, age, gender, activityLevel);
+            AppUtil.snack(view, getString(R.string.bmr_result_msg) + result);
         });
         return binding.getRoot();
 

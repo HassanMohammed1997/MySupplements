@@ -11,7 +11,7 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
+    <string name="menu_share">Share App</string>
     <string name="menu_send">Send</string>
     <string name="menu_bmr">BMR Calculator</string>
 
@@ -25,7 +25,7 @@
     <string name="gender_text">Select your gender</string>
     <string name="activity_level_string">Select activity level</string>
     <string name="communicate">Communicate</string>
-    <string name="menu_about">About</string>
+    <string name="menu_about">About App</string>
     <string name="home">Home</string>
     <string name="category">Categories</string>
     <string name="current_weight">Current Weight (KG)</string>
@@ -66,4 +66,6 @@
         <item>تنشيف</item>
 
     </string-array>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="bmr_result_msg">Your BMR =</string>
 </resources>

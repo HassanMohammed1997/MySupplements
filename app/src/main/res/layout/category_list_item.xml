@@ -8,6 +8,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardUseCompatPadding="true"
         android:foreground="?selectableItemBackground">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,17 +25,12 @@
                 android:scaleType="fitXY"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-            <View
-                android:id="@+id/view"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_200sdp"
-                android:background="@color/overlay_dark_40" />
 
             <TextView
                 android:id="@+id/category_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/overlay_light_20"
+                android:background="@color/overlay_dark_20"
                 android:padding="@dimen/_4sdp"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"

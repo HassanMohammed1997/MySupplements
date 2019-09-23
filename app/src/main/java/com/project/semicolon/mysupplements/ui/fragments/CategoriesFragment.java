@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.project.semicolon.mysupplements.R;
 import com.project.semicolon.mysupplements.adapter.CategoryAdapter;
@@ -81,6 +82,7 @@ public class CategoriesFragment extends Fragment implements Constants {
                 Navigation.findNavController(v).navigate(R.id.articlesFragment);
             }
         });
+
 
 
     }

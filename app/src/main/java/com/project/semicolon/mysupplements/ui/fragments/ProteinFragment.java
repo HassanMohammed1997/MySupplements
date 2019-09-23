@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.project.semicolon.mysupplements.R;
 import com.project.semicolon.mysupplements.adapter.RecommendAdapter;
 import com.project.semicolon.mysupplements.databinding.ProteinBinding;
+import com.project.semicolon.mysupplements.ui.ArticleActivity;
 import com.project.semicolon.mysupplements.utils.AppUtil;
 import com.project.semicolon.mysupplements.utils.Logger;
 import com.project.semicolon.mysupplements.utils.SharedPrefUtil;
@@ -75,7 +76,7 @@ public class ProteinFragment extends Fragment implements AdapterView.OnItemSelec
             SharedPrefUtil.save(getContext(), "desc", article.getDescription());
             SharedPrefUtil.save(getContext(), "image_url", article.getImageUrl());
             SharedPrefUtil.save(getContext(), "title", article.getTitle());
-            Intent in = new Intent(getContext(), ArticlesFragment.class);
+            Intent in = new Intent(getContext(), ArticleActivity.class);
             startActivity(in);
         });
 
@@ -83,6 +84,7 @@ public class ProteinFragment extends Fragment implements AdapterView.OnItemSelec
 
     private void initViews() {
         binding.targetSpinner.setOnItemSelectedListener(this);
+
 
         buttonAction();
 
@@ -110,13 +112,11 @@ public class ProteinFragment extends Fragment implements AdapterView.OnItemSelec
         switch (position) {
             case 0:
                 if (intFatPer >= 0 && intFatPer < 10) {
-                    Toast.makeText(getContext(), "Group 1", Toast.LENGTH_SHORT).show();
                     group = 1;
                 } else if (intFatPer >= 10 && intFatPer < 15) {
-                    Toast.makeText(getContext(), "Group 2", Toast.LENGTH_SHORT).show();
                     group = 2;
                 } else {
-                    Toast.makeText(getContext(), "Very High", Toast.LENGTH_SHORT).show();
+                    AppUtil.snack(binding.container, "نسبة الدهون عالية جدا");
                     return;
                 }
 
@@ -124,13 +124,10 @@ public class ProteinFragment extends Fragment implements AdapterView.OnItemSelec
 
             case 1:
                 if (intFatPer >= 0 && intFatPer < 10) {
-                    Toast.makeText(getContext(), "Group 2", Toast.LENGTH_SHORT).show();
                     group = 2;
                 } else if (intFatPer >= 10 && intFatPer < 15) {
-                    Toast.makeText(getContext(), "Group 3", Toast.LENGTH_SHORT).show();
                     group = 3;
                 } else {
-                    Toast.makeText(getContext(), "Group 3", Toast.LENGTH_SHORT).show();
                     group = 3;
                 }
 
@@ -138,12 +135,11 @@ public class ProteinFragment extends Fragment implements AdapterView.OnItemSelec
 
             case 2:
                 if (intFatPer >= 0 && intFatPer < 10) {
-                    Toast.makeText(getContext(), "Group 3", Toast.LENGTH_SHORT).show();
                     group = 3;
                 } else if (intFatPer >= 10 && intFatPer < 15) {
-                    Toast.makeText(getContext(), "Group 3", Toast.LENGTH_SHORT).show();
                     group = 3;
                 } else {
+                    //TODO Group 2 & Group 3 = Group 4
                     Toast.makeText(getContext(), "G2 & G3", Toast.LENGTH_SHORT).show();
                     return;
                 }

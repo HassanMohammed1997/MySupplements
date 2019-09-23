@@ -15,22 +15,26 @@
         <item
             android:id="@+id/nav_bmr"
             android:title="@string/menu_bmr" />
+
+
+        <item
+            android:id="@+id/nav_protein"
+            android:title="@string/protien" />
+
+
+        <item
+            android:id="@+id/nav_fat_burner"
+            android:title="@string/fat_burner" />
     </group>
 
     <item android:title="@string/communicate">
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
                 android:title="@string/menu_share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
 
             <item
                 android:id="@+id/nav_about"
-                android:icon="@drawable/ic_menu_send"
                 android:title="@string/menu_about" />
         </menu>
     </item>

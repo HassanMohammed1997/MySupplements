@@ -12,17 +12,14 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.project.semicolon.mysupplements.ui.fragments.MainFragment"
-        android:label="MainFragment" >
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_BMRFragment"
             app:destination="@id/BMRFragment" />
         <action
             android:id="@+id/action_mainFragment_to_fatBurnerFragment"
-            app:destination="@id/fatBurnerFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:destination="@id/fatBurnerFragment" />
         <action
             android:id="@+id/action_mainFragment_to_categoriesFragment"
             app:destination="@id/categoriesFragment" />
